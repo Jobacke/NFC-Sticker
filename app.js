@@ -88,7 +88,13 @@
       lines.push(`EMAIL;TYPE=INTERNET,${type}:${mail.address.trim()}`);
     });
 
-    if (cfg.location && cfg.location.trim()) {
+    if (cfg.address && (cfg.address.street || cfg.address.city || cfg.address.postalCode)) {
+      const street = escapeVCard(cfg.address.street || "");
+      const city = escapeVCard(cfg.address.city || "");
+      const postal = escapeVCard(cfg.address.postalCode || "");
+      const country = escapeVCard(cfg.address.country || "");
+      lines.push(`ADR;TYPE=HOME;CHARSET=UTF-8:;;${street};${city};;${postal};${country}`);
+    } else if (cfg.location && cfg.location.trim()) {
       lines.push(`ADR;TYPE=HOME;CHARSET=UTF-8:;;${escapeVCard(cfg.location.trim())};;;;`);
     }
 

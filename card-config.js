@@ -4,7 +4,7 @@
  * die herunterladbare .vcf-Kontaktdatei aktualisieren sich automatisch.
  */
 window.CARD_CONFIG = {
-  version: "1.0.1",
+  version: "1.0.2",
 
   // Persönliche Angaben
   firstName: "Johannes",
@@ -15,8 +15,14 @@ window.CARD_CONFIG = {
   // Optional: Organisation / Zusatzzeile (leer lassen zum Ausblenden)
   subtitle: "",
 
-  // Optional: Ort (z. B. "Berlin" – leer lassen, um den Ort auszublenden)
-  location: "",
+  // Optional: Ort / Adresse (leer lassen, um den Ort auszublenden)
+  location: "Wotanstrasse 5, 85579 Neubiberg",
+  address: {
+    street: "Wotanstrasse 5",
+    postalCode: "85579",
+    city: "Neubiberg",
+    country: "Deutschland"
+  },
 
   // Optional: Dateiname oder URL eines Profilbilds (z. B. "./profil.jpg").
   // Leer lassen, um das edle Monogramm anzuzeigen.
@@ -25,21 +31,21 @@ window.CARD_CONFIG = {
   // 3 Telefonnummern (werden als anklickbare Einträge & in der vCard gespeichert)
   phones: [
     {
-      label: "Mobil",
-      display: "+49 170 0000001",
-      number: "+491700000001",
+      label: "Mobil privat",
+      display: "+49 174 93 277 82",
+      number: "+491749327782",
       vcardType: "CELL,VOICE"
     },
     {
-      label: "Dienstlich",
-      display: "+49 171 0000002",
-      number: "+491710000002",
-      vcardType: "WORK,VOICE"
+      label: "Mobil JUH",
+      display: "+49 173 94 75 393",
+      number: "+491739475393",
+      vcardType: "WORK,CELL,VOICE"
     },
     {
-      label: "Privat / Zweitnummer",
-      display: "+49 30 0000003",
-      number: "+4930000003",
+      label: "Telefon privat",
+      display: "+49 89 21 899 874",
+      number: "+498921899874",
       vcardType: "HOME,VOICE"
     }
   ],
@@ -48,7 +54,7 @@ window.CARD_CONFIG = {
   whatsapp: {
     enabled: true,
     label: "WhatsApp",
-    number: "491700000001",
+    number: "491749327782",
     prefillMessage: "Hallo Johannes, ich habe gerade deine digitale Visitenkarte gescannt!"
   },
 
@@ -56,12 +62,12 @@ window.CARD_CONFIG = {
   emails: [
     {
       label: "Privat",
-      address: "johannes@beispiel.de",
+      address: "johannes@vjbackhaus.com",
       vcardType: "HOME"
     },
     {
       label: "Dienstlich",
-      address: "j.backhaus@rettungsdienst-beispiel.de",
+      address: "johannes.backhaus@johanniter.de",
       vcardType: "WORK"
     }
   ],

@@ -1,4 +1,4 @@
-const CACHE_NAME = "nfc-card-v1.0.1";
+const CACHE_NAME = "nfc-card-v1.0.2";
 const ASSETS = [
   "./",
   "./index.html",
