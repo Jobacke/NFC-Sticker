@@ -1,4 +1,4 @@
-# Digitale NFC-Visitenkarte (`v1.0.2`)
+# Digitale NFC-Visitenkarte (`v1.0.3`)
 
 Edle, dunkle Web-Visitenkarte speziell für den Einsatz mit NFC-Stickern auf iPhone & Android.
 

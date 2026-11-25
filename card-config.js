@@ -4,7 +4,7 @@
  * die herunterladbare .vcf-Kontaktdatei aktualisieren sich automatisch.
  */
 window.CARD_CONFIG = {
-  version: "1.0.2",
+  version: "1.0.3",
 
   // Persönliche Angaben
   firstName: "Johannes",
