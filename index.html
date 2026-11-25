@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#090b10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JB Visitenkarte">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Digitale NFC-Visitenkarte – Johannes Backhaus, Rettungssanitäter">
+
+  <meta property="og:title" content="Johannes Backhaus – Rettungssanitäter">
+  <meta property="og:description" content="Digitale Visitenkarte mit direktem Kontakt-Download und WhatsApp.">
+  <meta property="og:type" content="profile">
+
+  <title>Johannes Backhaus · Digitale Visitenkarte</title>
+
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-grid"></div>
+  </div>
+
+  <main class="shell">
+    <article class="card" aria-label="Digitale Visitenkarte">
+      <!-- Top Bar -->
+      <header class="card-topbar">
+        <span class="nfc-pill">
+          <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8.32a7.43 7.43 0 0 1 0 7.36"/>
+            <path d="M9.46 6.21a11.76 11.76 0 0 1 0 11.58"/>
+            <path d="M12.91 4.1a16.09 16.09 0 0 1 0 15.8"/>
+            <path d="M16.37 2a20.42 20.42 0 0 1 0 20"/>
+          </svg>
+          <span>NFC Visitenkarte</span>
+        </span>
+
+        <div class="topbar-actions">
+          <button type="button" class="icon-btn" id="qrBtn" aria-label="QR-Code anzeigen" title="QR-Code anzeigen">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+              <path d="M14 14h3v3h-3z"/>
+              <path d="M20 14h1v1"/>
+              <path d="M14 20h3v1"/>
+              <path d="M20 18v3h-1"/>
+            </svg>
+          </button>
+          <button type="button" class="icon-btn" id="shareBtn" aria-label="Visitenkarte teilen" title="Teilen">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/>
+              <polyline points="16 6 12 2 8 6"/>
+              <line x1="12" y1="2" x2="12" y2="15"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Hero / Monogram -->
+      <section class="hero">
+        <div class="emblem-wrap">
+          <div class="emblem-glow" aria-hidden="true"></div>
+          <div class="emblem" id="emblemContainer">
+            <span class="monogram" id="monogramText">JB</span>
+            <img class="avatar-img" id="avatarImg" alt="Profilbild" hidden>
+          </div>
+        </div>
+
+        <h1 class="full-name" id="fullName">Johannes Backhaus</h1>
+
+        <div class="role-badge">
+          <!-- Minimalistischer Star of Life / Rettungsdienst-Akzent -->
+          <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <line x1="12" y1="3" x2="12" y2="21"/>
+            <line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/>
+            <line x1="19.8" y1="7.5" x2="4.2" y2="16.5"/>
+          </svg>
+          <span id="roleText">Rettungssanitäter</span>
+        </div>
+
+        <p class="subtitle" id="subtitleText" hidden></p>
+
+        <p class="location-line" id="locationLine" hidden>
+          <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 1 1 13 0c0 5.4-6.5 11-6.5 11Z"/>
+            <circle cx="12" cy="10" r="2.2"/>
+          </svg>
+          <span id="locationText"></span>
+        </p>
+      </section>
+
+      <!-- Primary Actions -->
+      <section class="primary-actions" aria-label="Schnellaktionen">
+        <button type="button" class="btn btn-gold" id="saveContactBtn">
+          <svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <line x1="19" y1="8" x2="19" y2="14"/>
+            <line x1="22" y1="11" x2="16" y2="11"/>
+          </svg>
+          <span>Kontakt speichern</span>
+        </button>
+
+        <a class="btn btn-whatsapp" id="whatsappBtn" href="#" target="_blank" rel="noopener noreferrer">
+          <svg class="icon-md" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2Zm5.8 14.08c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.4-.14-.2-1.19-1.58-1.19-3.02 0-1.43.75-2.14 1.02-2.43.27-.29.58-.36.77-.36h.56c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.17 1.38Z"/>
+          </svg>
+          <span id="whatsappLabel">WhatsApp</span>
+        </a>
+      </section>
+
+      <!-- Phone Numbers -->
+      <section class="contact-section" id="phonesSection" aria-labelledby="phonesHeading">
+        <div class="section-header">
+          <h2 class="section-title" id="phonesHeading">Telefon</h2>
+          <span class="section-count" id="phonesCount">3 Nummern</span>
+        </div>
+        <div class="contact-group" id="phonesList"></div>
+      </section>
+
+      <!-- Email Addresses -->
+      <section class="contact-section" id="emailsSection" aria-labelledby="emailsHeading">
+        <div class="section-header">
+          <h2 class="section-title" id="emailsHeading">E-Mail</h2>
+          <span class="section-count" id="emailsCount">2 Adressen</span>
+        </div>
+        <div class="contact-group" id="emailsList"></div>
+      </section>
+
+      <!-- Footer with visible version number -->
+      <footer class="card-footer">
+        <span class="footer-brand">Johannes Backhaus</span>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <span class="version-badge" id="versionBadge">v1.0.0</span>
+      </footer>
+    </article>
+  </main>
+
+  <!-- QR Code Modal -->
+  <div class="modal-backdrop" id="qrModal" hidden role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title" id="qrModalTitle">QR-Code scannen</h2>
+        <button type="button" class="icon-btn" id="closeQrBtn" aria-label="Schließen">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="qr-frame" id="qrCodeContainer" aria-label="QR-Code zur Visitenkarte"></div>
+      <p class="qr-caption" id="qrUrlText"></p>
+      <button type="button" class="btn btn-subtle" id="copyUrlBtn">Link kopieren</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="./card-config.js"></script>
+  <script src="./qr.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
