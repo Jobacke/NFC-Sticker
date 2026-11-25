@@ -1,4 +1,4 @@
-# Digitale NFC-Visitenkarte (`v1.0.0`)
+# Digitale NFC-Visitenkarte (`v1.0.1`)
 
 Edle, dunkle Web-Visitenkarte speziell für den Einsatz mit NFC-Stickern auf iPhone & Android.
 
@@ -24,11 +24,11 @@ Alle persönlichen Angaben liegen gesammelt in [`card-config.js`](./card-config.
 2. Lokal pushen: `git push -u origin main`
 3. Auf GitHub unter **Settings → Pages → Build and deployment**: Source auf **Deploy from a branch**, Branch **`main`** (`/ (root)`) stellen.
 4. Deine Visitenkarte ist dann erreichbar unter:  
-   `https://jobacke.github.io/NFC-Sticker/`
+   `https://sticker.vjbackhaus.de/`
 
 ## NFC-Sticker mit dem iPhone beschreiben
 1. Kostenlose App **NFC Tools** aus dem App Store installieren.
 2. **Schreiben → Datensatz hinzufügen → URL / URI**.
-3. `https://jobacke.github.io/NFC-Sticker/` eintragen und bestätigen.
+3. `https://sticker.vjbackhaus.de/` eintragen und bestätigen.
 4. Auf **Schreiben** tippen und den NFC-Sticker oben an die Rückseite des iPhones halten.
 5. Fertig – jedes iPhone und Android öffnet beim Dranhalten sofort deine Visitenkarte!
